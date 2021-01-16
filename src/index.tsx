@@ -1,17 +1,27 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReduxThunk from 'redux-thunk';
+import History from './helpers/History';
+import globalReducer from './reducers/Global';
+import CryptoClient from './CryptoClient/CryptoClient';
+import './index.scss';
+
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension' // DISABLE THIS IN PRODUCTION MODE
+import { Router } from 'react-router-dom';
+
+const middleware = [ReduxThunk];
+
+const allReducers = combineReducers({
+    globalReducer: globalReducer
+});
+
+const store = createStore(allReducers, composeWithDevTools(applyMiddleware(...middleware)));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <Provider store={store}>
+        <Router history={History}>
+            <CryptoClient />
+        </Router>
+    </Provider>
+    , document.getElementById('root'));

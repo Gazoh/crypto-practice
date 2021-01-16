@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+
+// @Wrappers
+body {
+    font-family: "Roboto", sans-serif;
+    background: var(--green-color);
+    margin: 0;
+}
+
+#root,
+.App,
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#content-wrapper {
+    padding: var(--main-pad);
+}
+
+.button {
+    padding: var(--mid-pad);
+    text-align: center;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid transparent;
+    text-decoration: none;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    background-color: #40916C;
+    color:#ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
